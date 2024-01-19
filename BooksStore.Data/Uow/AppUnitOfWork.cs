@@ -41,10 +41,11 @@ public class AppUnitOfWork : IAppUnitOfWork
         _dbContext.Dispose();
         GC.SuppressFinalize(this);
     }
-
+    
     public async ValueTask DisposeAsync()
     {
         await _dbContext.DisposeAsync();
         GC.SuppressFinalize(this);
     }
+
 }
