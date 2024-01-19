@@ -1,7 +1,5 @@
-﻿using BooksStore.Shared.Core.Extension;
-using System.ComponentModel.DataAnnotations;
+﻿namespace BooksStore.Shared.Core.Data;
 
-namespace BooksStore.Shared.Core.Data;
 public class SaveChangeResult
 {
     public SaveChangeResult()

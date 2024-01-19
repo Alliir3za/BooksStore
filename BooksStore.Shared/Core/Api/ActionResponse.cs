@@ -1,9 +1,4 @@
-﻿using BooksStore.Shared.Core.Api;
-using BooksStore.Shared.Core.Extension;
-
-namespace BooksStore.Shared;
-
-
+﻿namespace BooksStore.Shared;
 
 public interface IActionResponse
 {

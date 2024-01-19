@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace BooksStore.Shared.Core.Api;
 
-namespace BooksStore.Shared.Core.Api;
 public enum ActionResponseStatusCode
 {
     [Display(Name = "Success Action")]

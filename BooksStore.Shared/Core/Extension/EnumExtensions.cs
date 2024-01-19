@@ -1,7 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection;
+﻿namespace BooksStore.Shared.Core.Extension;
 
-namespace BooksStore.Shared.Core.Extension;
 public static class EnumExtensions
 {
     public static string GetDisplayName(this Enum value)
