@@ -5,7 +5,10 @@ using BooksStore.Shared.Core.Data;
 using BookStore.Services;
 using BookStore.Services.Implementation;
 using BookStore.Services.Interface;
+using HealthChecks.SqlServer;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +22,11 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<BookDbContext>
     (option => option.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
+builder.Services
+    .AddHealthChecks()
+    .AddSqlServer(builder.Configuration.GetConnectionString(nameof(BookDbContext)));
+//.AddCheck<SqlServerHealthCheck>("SqlServerHandyCheck");
+
 builder.Services.AddScoped(typeof(IGenericRepo<>), typeof(GenericRepo<>));
 builder.Services.AddScoped<IAppUnitOfWork, AppUnitOfWork>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -27,7 +35,16 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-app.UseRouting();
+app.UseRouting()
+    .UseEndpoints(config =>
+    {
+        config.MapHealthChecks("/health", new HealthCheckOptions
+        {
+            Predicate = _ => true,
+            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+        });
+    });
+
 app.MapControllers();
 
 // Configure the HTTP request pipeline.
