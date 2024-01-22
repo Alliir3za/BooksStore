@@ -1,8 +1,5 @@
-﻿using BooksStore.Shared;
-using BookStore.Domain.Dto;
-using BookStore.Domain.Entities;
+﻿namespace BookStore.Services;
 
-namespace BookStore.Services;
 public interface IUserService
 {
     Task<IActionResponse<object>> Add(User user, CancellationToken ct);

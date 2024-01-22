@@ -1,12 +1,5 @@
-﻿using BooksStore.Data;
-using BooksStore.Shared;
-using BooksStore.Shared.Core.Api;
-using BookStore.Domain.Dto;
-using BookStore.Domain.Entities;
-using BookStore.Services.Resources;
-using System.Data.Entity;
+﻿namespace BookStore.Services.Implementation;
 
-namespace BookStore.Services.Implementation;
 public class UserService : IUserService
 {
     private readonly IAppUnitOfWork _uow;
