@@ -47,5 +47,4 @@ public class AppUnitOfWork : IAppUnitOfWork
         await _dbContext.DisposeAsync();
         GC.SuppressFinalize(this);
     }
-
 }

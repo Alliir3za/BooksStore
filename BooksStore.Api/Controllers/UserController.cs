@@ -8,13 +8,9 @@ namespace BooksStore.Api.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class UserController : ControllerBase
+public class UserController(IUserService userService) : ControllerBase
 {
-    private readonly IUserService _userService;
-
-    public UserController(IUserService userService)
-        => _userService = userService;
-
+    private readonly IUserService _userService = userService;
 
     [HttpGet]
     public async Task<IActionResult> GetAllUsers()
