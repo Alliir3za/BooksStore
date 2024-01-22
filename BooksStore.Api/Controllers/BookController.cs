@@ -1,8 +1,4 @@
-﻿using BookStore.Services.Interface;
-using Microsoft.AspNetCore.Mvc;
-
-namespace BooksStore.Api.Controllers;
-
+﻿namespace BooksStore.Api.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]

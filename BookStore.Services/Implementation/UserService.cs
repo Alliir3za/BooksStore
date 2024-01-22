@@ -16,7 +16,7 @@ public class UserService : IUserService
 
     public async Task<IActionResponse<object>> Add(User user, CancellationToken ct)
     {
-        User users = new User
+        User users = new()
         {
             FirstName = user.FirstName,
             LastName = user.LastName,
